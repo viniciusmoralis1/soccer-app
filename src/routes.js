@@ -8,15 +8,15 @@ const Routes = createAppContainer(
       Home: {
           screen: Home,
           navigationOptions:{
-              title: 'Soccer'
+            headerShown: false
           },
       }
   }, {
       defaultNavigationOptions: {
-          headerTintColor: '#FFF',
+          headerTintColor: '#000',
           headerBackTitleVisible: false,
           headerStyle: {
-              backgroundColor: '#111',
+              backgroundColor: '#D3D3D3',
           },
       },
   })
