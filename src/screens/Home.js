@@ -1,8 +1,22 @@
-import React from 'react';
-import { TouchableOpacity, View, Text, FlatList, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
 import api from '../services/api';
 
-function Home(){
+function Home({ navigation }){
+  const [dados, setDados] = useState(null);
+  let tipo = "";
+
+  async function loadData(tipo){
+    let response = "";
+    if (tipo == "ucl"){
+      response = await(api.get('/ucl'));
+    } else if (tipo == "uel"){
+      response = await(api.get('/uel'));
+    } else if (tipo == "bra"){
+      response = await(api.get('/bra'));
+    }
+    setDados(response);
+  }
 
   return (
     <View style={styles.container}>
@@ -11,17 +25,27 @@ function Home(){
           Selecione um campeonato para visualizar
         </Text>
       </View>
-      <TouchableOpacity style={styles.botaoucl}>
+      <TouchableOpacity style={styles.botaoucl} onPress={() => {
+          tipo = 'ucl';
+          loadData(tipo);
+          navigation.navigate('Info', {dados: dados.data});
+        }}>
         <Text style={styles.text}>
           UEFA Champions League
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.botaouel}>
+      <TouchableOpacity style={styles.botaouel} onPress={() => {
+          tipo = 'uel';
+          loadData(tipo);
+        }}>
         <Text style={styles.text}>
           UEFA Europa League
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.botaobra}>
+      <TouchableOpacity style={styles.botaobra} onPress={() => {
+          tipo = 'bra';
+          loadData(tipo);
+        }}>
         <Text style={styles.text}>
           Campeonato Brasileiro Serie A
         </Text>

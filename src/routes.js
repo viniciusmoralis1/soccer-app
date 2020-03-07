@@ -2,6 +2,7 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import Home from './screens/Home';
+import Info from './screens/Info';
 
 const Routes = createAppContainer(
   createStackNavigator({
@@ -10,7 +11,13 @@ const Routes = createAppContainer(
           navigationOptions:{
             headerShown: false
           },
-      }
+      },
+      Info: {
+        screen: Info,
+        navigationOptions:{
+          title: 'Times '
+        },
+    }
   }, {
       defaultNavigationOptions: {
           headerTintColor: '#000',
