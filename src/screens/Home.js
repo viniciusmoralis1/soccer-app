@@ -1,10 +1,16 @@
 import React from 'react';
 import { TouchableOpacity, View, Text, FlatList, StyleSheet } from 'react-native';
+import api from '../services/api';
 
 function Home(){
 
   return (
     <View style={styles.container}>
+      <View style={styles.containerTexto}>
+        <Text style={styles.textoPrincipal}>
+          Selecione um campeonato para visualizar
+        </Text>
+      </View>
       <TouchableOpacity style={styles.botaoucl}>
         <Text style={styles.text}>
           UEFA Champions League
@@ -30,32 +36,35 @@ const styles = StyleSheet.create({
     backgroundColor: "#F3F3F3",
     flex: 1,
   },
+  containerTexto: {
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 10,
+  },
+  textoPrincipal: {
+    fontSize: 19,
+
+  },
   botaoucl: {
     height: 70,
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 10,
-    borderStyle: "solid",
-    borderWidth: 5,
-    borderColor: "#EEE",
+
   },
   botaouel: {
     height: 70,
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 10,
-    borderStyle: "solid",
-    borderWidth: 1,
-    borderColor: "#EEE",
+
   },
   botaobra: {
     height: 70,
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 10,
-    borderStyle: "solid",
-    borderWidth: 1,
-    borderColor: "#EEE",
+
   },
   text: {
     fontWeight: "bold",
