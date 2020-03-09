@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, View, Text, StyleSheet, Image } from 'react-native';
 import api from '../services/api';
 
 function Home({ navigation }){
@@ -29,47 +29,67 @@ function Home({ navigation }){
           Selecione um campeonato para visualizar
         </Text>
       </View>
-      <TouchableOpacity style={styles.botaoucl} onPress={() => {
+      <TouchableOpacity style={styles.botaoSelecionar} onPress={() => {
           tipo = 'ucl';
           loadData(tipo);
-          navigation.navigate('Info', {dados: dados});
+          navigation.navigate('Info', {dados: dados.teams});
         }}>
+        <Image
+          style={styles.icones}
+          source={require('../../assets/champions.png')}
+        />
         <Text style={styles.text}>
           UEFA Champions League
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.botaouel} onPress={() => {
+      <TouchableOpacity style={styles.botaoSelecionar} onPress={() => {
           tipo = 'plp';
           loadData(tipo);
-          navigation.navigate('Info', {dados: dados});
+          navigation.navigate('Info', {dados: dados.teams});
         }}>
+        <Image
+          style={styles.icones}
+          source={require('../../assets/primeira-liga.jpg')}
+        />
         <Text style={styles.text}>
           Primeira Liga de Portugal
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.botaouel} onPress={() => {
+      <TouchableOpacity style={styles.botaoSelecionar} onPress={() => {
           tipo = 'prl';
           loadData(tipo);
-          navigation.navigate('Info', {dados: dados});
+          navigation.navigate('Info', {dados: dados.teams});
         }}>
+        <Image
+          style={styles.icones}
+          source={require('../../assets/premier-league.png')}
+        />
         <Text style={styles.text}>
           Premier League
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.botaouel} onPress={() => {
+      <TouchableOpacity style={styles.botaoSelecionar} onPress={() => {
           tipo = 'lls';
           loadData(tipo);
-          navigation.navigate('Info', {dados: dados});
+          navigation.navigate('Info', {dados: dados.teams});
         }}>
+        <Image
+          style={styles.icones}
+          source={require('../../assets/la-liga.jpg')}
+        />
         <Text style={styles.text}>
           La Liga Santander
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.botaobra} onPress={() => {
+      <TouchableOpacity style={styles.botaoSelecionar} onPress={() => {
           tipo = 'bra';
           loadData(tipo);
-          navigation.navigate('Info', {dados: dados});
+          navigation.navigate('Info', {dados: dados.teams});
         }}>
+        <Image
+          style={styles.icones}
+          source={require('../../assets/brasileirao.png')}
+        />
         <Text style={styles.text}>
           Campeonato Brasileiro Serie A
         </Text>
@@ -81,7 +101,7 @@ function Home({ navigation }){
 const styles = StyleSheet.create({
   container: {
     marginTop: 23,
-    backgroundColor: "#F3F3F3",
+    backgroundColor: "#FCFCFC",
     flex: 1,
   },
   containerTexto: {
@@ -90,35 +110,26 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   textoPrincipal: {
-    fontSize: 19,
-
+    marginTop: 10,
+    fontSize: 20,
   },
-  botaoucl: {
+  botaoSelecionar: {
+    flexDirection: 'row',
     height: 70,
     alignItems: "center",
-    justifyContent: "center",
     marginBottom: 10,
-
-  },
-  botaouel: {
-    height: 70,
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 10,
-
-  },
-  botaobra: {
-    height: 70,
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 10,
-
+    justifyContent: "center"
   },
   text: {
     fontWeight: "bold",
     fontSize: 18,
-    color: "#111",
-  },  
+    color: "#6E6968",
+  },
+  icones: {
+    width: 50,
+    height: 50,
+    marginRight: 22,
+  },
 });
 
 export default Home;

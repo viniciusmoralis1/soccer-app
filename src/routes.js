@@ -15,7 +15,7 @@ const Routes = createAppContainer(
       Info: {
         screen: Info,
         navigationOptions:{
-          title: 'Times '
+          title: 'Times   '
         },
     }
   }, {

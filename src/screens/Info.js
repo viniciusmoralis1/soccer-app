@@ -1,26 +1,18 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { View, FlatList, Text, StyleSheet } from 'react-native';
 
 function Info({ navigation }){
-  const [times, setTimes] = useState([]);  
 
-  async function lerDados(){
-    const dados = await(navigation.getParam('dados'));    
-    console.log("TIMES");
-    setTimes(dados.teams);
-    console.log(times);
-  }
-  lerDados();
-
+  const dados = navigation.getParam('dados')
   return (
     <View style={styles.container}>
       <FlatList
-        data={times}
+        data={dados}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-            <Text style={styles.textoPrincipal}>
-              {item.name}
-            </Text>
+          <Text style={styles.textoPrincipal}>
+            {item.name}
+          </Text>
         )}
       />
     </View>
@@ -29,7 +21,6 @@ function Info({ navigation }){
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 23,
     backgroundColor: "#F3F3F3",
     flex: 1,
   },
