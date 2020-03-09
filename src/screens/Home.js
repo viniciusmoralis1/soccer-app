@@ -3,19 +3,23 @@ import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
 import api from '../services/api';
 
 function Home({ navigation }){
-  const [dados, setDados] = useState(null);
+  const [dados, setDados] = useState([]);
   let tipo = "";
 
   async function loadData(tipo){
     let response = "";
     if (tipo == "ucl"){
       response = await(api.get('/ucl'));
-    } else if (tipo == "uel"){
-      response = await(api.get('/uel'));
+    } else if (tipo == "plp"){
+      response = await(api.get('/plp'));
+    } else if (tipo == "prl"){
+      response = await(api.get('/prl'));
+    } else if (tipo == "lls"){
+      response = await(api.get('/lls'));
     } else if (tipo == "bra"){
       response = await(api.get('/bra'));
     }
-    setDados(response);
+    setDados(JSON.parse(response.data));
   }
 
   return (
@@ -28,23 +32,43 @@ function Home({ navigation }){
       <TouchableOpacity style={styles.botaoucl} onPress={() => {
           tipo = 'ucl';
           loadData(tipo);
-          navigation.navigate('Info', {dados: dados.data});
+          navigation.navigate('Info', {dados: dados});
         }}>
         <Text style={styles.text}>
           UEFA Champions League
         </Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.botaouel} onPress={() => {
-          tipo = 'uel';
+          tipo = 'plp';
           loadData(tipo);
+          navigation.navigate('Info', {dados: dados});
         }}>
         <Text style={styles.text}>
-          UEFA Europa League
+          Primeira Liga de Portugal
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.botaouel} onPress={() => {
+          tipo = 'prl';
+          loadData(tipo);
+          navigation.navigate('Info', {dados: dados});
+        }}>
+        <Text style={styles.text}>
+          Premier League
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.botaouel} onPress={() => {
+          tipo = 'lls';
+          loadData(tipo);
+          navigation.navigate('Info', {dados: dados});
+        }}>
+        <Text style={styles.text}>
+          La Liga Santander
         </Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.botaobra} onPress={() => {
           tipo = 'bra';
           loadData(tipo);
+          navigation.navigate('Info', {dados: dados});
         }}>
         <Text style={styles.text}>
           Campeonato Brasileiro Serie A
