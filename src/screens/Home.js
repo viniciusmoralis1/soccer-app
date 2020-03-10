@@ -100,7 +100,7 @@ function Home({ navigation }){
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 23,
+    marginTop: 30,
     backgroundColor: "#FCFCFC",
     flex: 1,
   },
@@ -115,10 +115,14 @@ const styles = StyleSheet.create({
   },
   botaoSelecionar: {
     flexDirection: 'row',
-    height: 70,
+    height: 75,
     alignItems: "center",
     marginBottom: 10,
-    justifyContent: "center"
+    justifyContent: "center",
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 10,
+    paddingRight: 35,
   },
   text: {
     fontWeight: "bold",
@@ -128,7 +132,7 @@ const styles = StyleSheet.create({
   icones: {
     width: 50,
     height: 50,
-    marginRight: 22,
+    marginRight: 20,
   },
 });
 
